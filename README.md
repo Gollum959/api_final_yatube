@@ -5,7 +5,9 @@
 #### About the project
 
 Django REST framework training project. Built on viewsets with different access levels allowing you to make changes to the database.
+
 JWT tokens are used for authentication.
+
 Unauthorized users have read-only access to the API. Authorized users are allowed to change their content, otherwise, access is read-only.
 
 #### How to start a project
