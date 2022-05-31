@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404
-from posts.models import Post, Group, User
 from rest_framework import filters
-from rest_framework import mixins
 from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 
+from api.customviewset import CreateListViewSet
 from api.permissions import IsOwnerOrReadOnly
 from api.serializers import (
     PostSerializer,
@@ -13,6 +12,7 @@ from api.serializers import (
     GroupsSerializer,
     FollowSerializer
 )
+from posts.models import Post, Group, User
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -32,13 +32,17 @@ class ComentsViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
 
     def get_queryset(self):
-        pk_post = self.kwargs.get('post_id')
-        post = get_object_or_404(Post, pk=pk_post)
+        post = self.__get_post()
         return post.comments.all()
 
     def perform_create(self, serializer):
-        post = get_object_or_404(Post, pk=self.kwargs.get('post_id'))
+        post = self.__get_post()
         serializer.save(author=self.request.user, post=post)
+
+    def __get_post(self) -> Post:
+        """Get post by id"""
+        pk_post = self.kwargs.get('post_id')
+        return get_object_or_404(Post, pk=pk_post)
 
 
 class GroupsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -48,9 +52,7 @@ class GroupsViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (AllowAny, )
 
 
-class FollowViewSet(viewsets.mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
-                    viewsets.GenericViewSet):
+class FollowViewSet(CreateListViewSet):
     """View class for Follow model.
     Shows subscriptions and allows you to subscribe"""
     serializer_class = FollowSerializer
