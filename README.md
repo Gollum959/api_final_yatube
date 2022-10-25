@@ -6,7 +6,7 @@
 - [Technologies](#technologies)
 
 
-#### About the project
+## About the project
 
 Django REST framework training project. Built on viewsets with different access levels allowing you to make changes to the database.
 
@@ -14,13 +14,13 @@ JWT tokens are used for authentication.
 
 Unauthorized users have read-only access to the API. Authorized users are allowed to change their content, otherwise, access is read-only.
 
-#### Filling the env file
+## Filling the env file
 
-**SECRET_KEY**=' ' # django Secret Key
-**DEBUG**= # True or False
-**ALLOWED_HOSTS**= # for example localhost,127.0.0.1,web
+- **SECRET_KEY**=' ' # django Secret Key
+- **DEBUG**= # True or False
+- **ALLOWED_HOSTS**= # for example localhost,127.0.0.1,web
 
-#### How to start a project
+## How to start a project
 
 - 	Clone the repository and change into it on the command line:
 
@@ -41,7 +41,7 @@ Unauthorized users have read-only access to the API. Authorized users are allowe
 
         python3 manage.py runserver
 
-#### API request and response examples
+## API request and response examples
 
 **- Get JWT token**
 
@@ -103,10 +103,10 @@ POST http://127.0.0.1:8000/api/v1/posts/
 
 **You can find all information about endpoints here http://127.0.0.1:8000/redoc/**
 
-#### Authors
+## Authors
 [Aleksandr Alekseev](https://github.com/Gollum959/)
 
-#### Technologies
+## Technologies
 
 Project is created with:
 * Python 3.7
