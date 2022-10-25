@@ -1,6 +1,10 @@
 - [About the project](#about-the-project)
+- [Filling the env file](#filling-the-env-file)
 - [How to start a project](#how-to-start-a-project)
 - [API request and response examples](#api-request-and-response-examples)
+- [Authors](#authors)
+- [Technologies](#technologies)
+
 
 #### About the project
 
@@ -9,6 +13,12 @@ Django REST framework training project. Built on viewsets with different access 
 JWT tokens are used for authentication.
 
 Unauthorized users have read-only access to the API. Authorized users are allowed to change their content, otherwise, access is read-only.
+
+#### Filling the env file
+
+**SECRET_KEY**=' ' # django Secret Key
+**DEBUG**= # True or False
+**ALLOWED_HOSTS**= # for example localhost,127.0.0.1,web
 
 #### How to start a project
 
@@ -92,3 +102,15 @@ POST http://127.0.0.1:8000/api/v1/posts/
     }
 
 **You can find all information about endpoints here http://127.0.0.1:8000/redoc/**
+
+#### Authors
+[Aleksandr Alekseev](https://github.com/Gollum959/)
+
+#### Technologies
+
+Project is created with:
+* Python 3.7
+* SqLite
+* Django 2.2.16
+* Django REST Framework
+* Simple-JWT
